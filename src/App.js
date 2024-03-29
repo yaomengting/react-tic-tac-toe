@@ -17,6 +17,7 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xPlaying, setXPlaying] = useState(true);
   const [winner, setWinner]= useState(null);
+  const [gameOver, setGameOver] = useState(false);
   const handleBoxClick = (boxIdx) => {
     const updatedBoard = board.map((value, idx) => {
       if(idx === boxIdx){
@@ -35,14 +36,21 @@ function App() {
     for(let i = 0; i < WIN_CONDITIONS.length; i++){
       const [x, y, z] = WIN_CONDITIONS[i];
       if(board[x] && board[x] === board[y]&& board[y] === board[z]){
+        setGameOver(true);
         return board[x];
       }
     }
+  }
+
+  const resetBoard = () => {
+    setGameOver(false);
+    setBoard(Array(9).fill(null));
   }
   return (
     <div className="App">
       <div>Winner is:  {winner}</div>
    <Board board={board} onClick={handleBoxClick}/>
+   <button onClick={resetBoard}>Reset</button>
     </div>
   );
 }

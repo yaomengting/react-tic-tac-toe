@@ -1,4 +1,14 @@
-.board {
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.winner, .current-player, .reset-button {
+  text-align: center;
+}.board {
   display: grid;
   grid-template-columns: repeat(3, 6em);
   place-items: center;

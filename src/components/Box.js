@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const Box = ({value}) => {
+export default function Box({value, onClick}){
+ 
   return (
-    <div>{value}</div>
+    <button className='box' onClick={onClick}>{value}</button>
   )
 }
